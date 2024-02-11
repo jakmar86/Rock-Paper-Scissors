@@ -96,4 +96,4 @@ function playGame() {
 
 const playerSelection = "rock"
 const computerSelection = getComputerChoice()
-console.log(playGame);
+console.log(playGame());
