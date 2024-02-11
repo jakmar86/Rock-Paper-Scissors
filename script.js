@@ -26,9 +26,9 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playGame() {
-    let games == 0;
-    let player == 0;
-    let computer == 0;
+    let games = 0;
+    let player = 0;
+    let computer = 0;
     if (playRound("rock", getComputerChoice()) == "you lose") {
         games++;
         computer++;
