@@ -24,7 +24,6 @@ function playRound(playerSelection, computerSelection) {
     } else {
         return "invalid selection"
     }
-
 }
 
 const playerSelection = "rock"
