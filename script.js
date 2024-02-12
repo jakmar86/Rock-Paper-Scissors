@@ -1,99 +1,46 @@
+
 function getComputerChoice() {
     const computerChoice = ["rock","paper","scissors"];
     const random = Math.floor(Math.random() * computerChoice.length);
     return computerChoice[random]
 }
 
-function playRound(playerSelection, computerSelection) {
+function getPlayerChoice() {
+    let playerChoice = prompt("Choose: Rock, Paper or Scissors?");
+    return playerChoice.toLowerCase();
+}
 
-    if (playerSelection == computerSelection) {
-        return "Draw";
-    } else if (playerSelection == "rock" && computerSelection == "paper") {
-        return "you lose";
-    } else if (playerSelection == "rock" && computerSelection == "scissors") {
-        return "you win";
-    } else if (playerSelection == "paper" && computerSelection == "rock") {
-        return "win";
-    } else if (playerSelection == "paper" && computerSelection == "scissors") {
-        return "you lose";
-    } else if (playerSelection == "scissors" && computerSelection == "rock") {
-        return "you lose"
-    } else if (playerSelection == "scissors" && computerSelection == "paper") {
-        return "you win";
-    } else {
-        return "invalid selection";
+function playRound(getPlayerChoice, getComputerChoice) {
+    switch (getPlayerChoice) {
+        case "rock":
+            if (getComputerChoice == "rock") {
+                return "It's a draw";
+            } else if (getComputerChoice == "paper") {
+                return "You lose";
+            } else {
+                return "You win";
+            } 
+            break;
+        case "paper":
+            if (getComputerChoice == "rock") {
+                return "You win";
+            } else if (getComputerChoice == "paper") {
+                return "It's a draw";
+            } else {
+                return "You lose";
+            }
+            break;      
+        case "scissors":
+            if (getComputerChoice == "rock") {
+                return "You lose";
+            } else if (getComputerChoice == "paper") {
+                return "you win";
+            } else {
+                return "It's a draw";
+            }
+            break;
     }
 }
 
-function playGame() {
-    let games = 0;
-    let player = 0;
-    let computer = 0;
-    if (playRound("rock", getComputerChoice()) == "you lose") {
-        games++;
-        computer++;
-        console.log(`Player ${player} - ${computer} Computer`);
-    } else if (playRound("rock", getComputerChoice()) == "you win") {
-        games++;
-        player++;
-        console.log(`Player ${player} - ${computer} Computer`);
-    } else if (playRound("rock", getComputerChoice()) == "draw") {
-        games++;
-        console.log(`Player ${player} - ${computer} Computer`);
-    }
-    if (playRound("rock", getComputerChoice()) == "you lose") {
-        games++;
-        computer++;
-        console.log(`Player ${player} - ${computer} Computer`);
-    } else if (playRound("rock", getComputerChoice()) == "you win") {
-        games++;
-        player++;
-        console.log(`Player ${player} - ${computer} Computer`);
-    } else if (playRound("rock", getComputerChoice()) == "draw") {
-        games++;
-        console.log(`Player ${player} - ${computer} Computer`);
-    }
-    if (playRound("rock", getComputerChoice()) == "you lose") {
-        games++;
-        computer++;
-        console.log(`Player ${player} - ${computer} Computer`);
-    } else if (playRound("rock", getComputerChoice()) == "you win") {
-        games++;
-        player++;
-        console.log(`Player ${player} - ${computer} Computer`);
-    } else if (playRound("rock", getComputerChoice()) == "draw") {
-        games++;
-        console.log(`Player ${player} - ${computer} Computer`);
-    }
-    if (playRound("rock", getComputerChoice()) == "you lose") {
-        games++;
-        computer++;
-        console.log(`Player ${player} - ${computer} Computer`);
-    } else if (playRound("rock", getComputerChoice()) == "you win") {
-        games++;
-        player++;
-        console.log(`Player ${player} - ${computer} Computer`);
-    } else if (playRound("rock", getComputerChoice()) == "draw") {
-        games++;
-        console.log(`Player ${player} - ${computer} Computer`);
-    }
-    if (playRound("rock", getComputerChoice()) == "you lose") {
-        games++;
-        computer++;
-        console.log(`Player ${player} - ${computer} Computer`);
-    } else if (playRound("rock", getComputerChoice()) == "you win") {
-        games++;
-        player++;
-        console.log(`Player ${player} - ${computer} Computer`);
-    } else if (playRound("rock", getComputerChoice()) == "draw") {
-        games++;
-        console.log(`Player ${player} - ${computer} Computer`);
-    }
 
-}
-
-
-
-const playerSelection = "rock"
-const computerSelection = getComputerChoice()
-console.log(playGame());
+console.log(playRound(getPlayerChoice(), getComputerChoice()));
