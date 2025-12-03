@@ -75,3 +75,23 @@ h1 {
     color: #555;
     margin-top: 20px;
 }
+
+/* New Reset Button Styles */
+.reset-section {
+    margin-top: 30px;
+}
+
+#reset-score {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #fff;
+    border: 2px solid #555;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#reset-score:hover {
+    background-color: #555;
+    color: white;
+}
