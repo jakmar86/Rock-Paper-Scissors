@@ -1,81 +1,83 @@
+// 1. Caching the DOM (storing HTML elements in variables)
+let userScore = 0;
+let computerScore = 0;
+const userScore_span = document.getElementById("user-score");
+const computerScore_span = document.getElementById("comp-score");
+const result_p = document.getElementById("result-text");
+const rock_btn = document.getElementById("rock");
+const paper_btn = document.getElementById("paper");
+const scissors_btn = document.getElementById("scissors");
+
+// 2. The core game logic functions
 
 function getComputerChoice() {
-    const computerChoice = ["rock","paper","scissors"];
-    const random = Math.floor(Math.random() * computerChoice.length);
-    return computerChoice[random]
+    const choices = ['rock', 'paper', 'scissors'];
+    const randomNumber = Math.floor(Math.random() * 3);
+    return choices[randomNumber];
 }
 
-function getPlayerChoice() {
-    let playerChoice = prompt("Choose: Rock, Paper or Scissors?");
-    return playerChoice.toLowerCase();
+function win(userChoice, computerChoice) {
+    userScore++;
+    userScore_span.innerText = userScore;
+    computerScore_span.innerText = computerScore;
+    result_p.innerHTML = `You chose ${userChoice}. Comp chose ${computerChoice}. <br> <span style="color:green">You Win!</span>`;
+    document.getElementById(userChoice).style.borderColor = "green";
+    setTimeout(function() { document.getElementById(userChoice).style.borderColor = "#333"; }, 500);
 }
 
-function playRound() {
-    const playerChoice = getPlayerChoice(); 
-    const computerChoice = getComputerChoice(); 
+function lose(userChoice, computerChoice) {
+    computerScore++;
+    userScore_span.innerText = userScore;
+    computerScore_span.innerText = computerScore;
+    result_p.innerHTML = `You chose ${userChoice}. Comp chose ${computerChoice}. <br> <span style="color:red">You Lost!</span>`;
+    document.getElementById(userChoice).style.borderColor = "red";
+    setTimeout(function() { document.getElementById(userChoice).style.borderColor = "#333"; }, 500);
+}
 
-    switch (playerChoice) {
-        case "rock":
-            if (computerChoice === "rock") {
-                return "It's a draw";
-            } else if (computerChoice === "paper") {
-                return "You lose";
-            } else {
-                return "You win";
-            }
+function draw(userChoice, computerChoice) {
+    result_p.innerHTML = `You both chose ${userChoice}. <br> <span style="color:gray">It's a Draw!</span>`;
+    document.getElementById(userChoice).style.borderColor = "gray";
+    setTimeout(function() { document.getElementById(userChoice).style.borderColor = "#333"; }, 500);
+}
+
+function game(userChoice) {
+    const computerChoice = getComputerChoice();
+    
+    // Logic to determine winner
+    switch (userChoice + computerChoice) {
+        case "rockscissors":
+        case "paperrock":
+        case "scissorspaper":
+            win(userChoice, computerChoice);
             break;
-        case "paper":
-            if (computerChoice === "rock") {
-                return "You win";
-            } else if (computerChoice === "paper") {
-                return "It's a draw";
-            } else {
-                return "You lose";
-            }
+        case "rockpaper":
+        case "paperscissors":
+        case "scissorsrock":
+            lose(userChoice, computerChoice);
             break;
-        case "scissors":
-            if (computerChoice === "rock") {
-                return "You lose";
-            } else if (computerChoice === "paper") {
-                return "You win";
-            } else {
-                return "It's a draw";
-            }
+        case "rockrock":
+        case "paperpaper":
+        case "scissorsscissors":
+            draw(userChoice, computerChoice);
             break;
-        default:
-            return "Invalid choice. Please choose rock, paper, or scissors.";
+            
     }
 }
 
+// 3. Adding Event Listeners (waiting for clicks)
 
-function playGame() {
-    let playerCounter = 0;
-    let computerCounter = 0;
- 
+function main() {
+    rock_btn.addEventListener('click', function() {
+        game("rock");
+    });
 
-    while (playerCounter < 5 && computerCounter < 5) {
-        let result = playRound();
-        if (result === "You win") {
-            playerCounter++;
-            console.log("You win this round");
-        } else if (result === "You lose") {
-            computerCounter++;
-            console.log("You lose this round");
-        } else {
-            console.log("It's a draw this round");
-        }
-        console.log(`Player ${playerCounter} - Computer ${computerCounter}`);
+    paper_btn.addEventListener('click', function() {
+        game("paper");
+    });
 
-    }
-
-    if (playerCounter > computerCounter) {
-        console.log("You won the game!");
-    } else if (playerCounter < computerCounter) {
-        console.log("You lost the game.");
-    } else {
-        console.log("The game ended in a draw.");
-    }
+    scissors_btn.addEventListener('click', function() {
+        game("scissors");
+    });
 }
-  
 
-playGame()
+main();
