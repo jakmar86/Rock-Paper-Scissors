@@ -1,2 +1,2 @@
-Odin Rock, Paper, Scissors project  
+Odin Rock, Paper, Scissors project 
  
