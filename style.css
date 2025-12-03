@@ -1,33 +1,36 @@
+/* CSS Styles - Dark Mode */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #f0f0f0;
+    background-color: #252525; /* Dark background */
+    color: #ffffff; /* Light text */
     margin: 0;
     padding: 20px;
 }
 
 .container {
-    background-color: white;
+    background-color: #333333; /* Darker container */
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 h1 {
-    color: #333;
+    color: #ffffff;
 }
 
 .score-board {
     display: flex;
     justify-content: space-around;
-    border: 2px solid #333;
+    border: 2px solid #ffffff; /* White border */
     border-radius: 5px;
     padding: 10px;
     margin: 20px 0;
     font-size: 1.2rem;
-    background-color: #fff;
+    background-color: #333;
+    color: #fff;
 }
 
 .badge {
@@ -42,7 +45,7 @@ h1 {
     font-size: 1.5rem;
     font-weight: bold;
     margin: 20px 0;
-    min-height: 40px; /* Keeps space so layout doesn't jump */
+    min-height: 40px;
 }
 
 .choices {
@@ -50,8 +53,8 @@ h1 {
 }
 
 .choice-btn {
-    background: white;
-    border: 3px solid #333;
+    background: #333; /* Dark button background */
+    border: 3px solid #ffffff; /* White border */
     border-radius: 50%;
     width: 80px;
     height: 80px;
@@ -65,18 +68,17 @@ h1 {
 }
 
 .choice-btn:hover {
-    background-color: #333;
-    color: white;
+    background-color: #555; /* Lighter grey on hover */
     transform: scale(1.1);
 }
 
 #action-message {
     font-size: 1.2rem;
-    color: #555;
+    color: #cccccc; /* Light grey text */
     margin-top: 20px;
 }
 
-/* New Reset Button Styles */
+/* Reset Button Styles - Dark Mode */
 .reset-section {
     margin-top: 30px;
 }
@@ -84,14 +86,15 @@ h1 {
 #reset-score {
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #fff;
-    border: 2px solid #555;
+    background-color: #333;
+    color: #fff;
+    border: 2px solid #fff;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
 }
 
 #reset-score:hover {
-    background-color: #555;
-    color: white;
+    background-color: #fff;
+    color: #333;
 }
