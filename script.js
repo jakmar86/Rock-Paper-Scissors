@@ -7,6 +7,7 @@ const result_p = document.getElementById("result-text");
 const rock_btn = document.getElementById("rock");
 const paper_btn = document.getElementById("paper");
 const scissors_btn = document.getElementById("scissors");
+const reset_btn = document.getElementById("reset-score");
 
 // 2. The core game logic functions
 
@@ -64,6 +65,14 @@ function game(userChoice) {
     }
 }
 
+function resetGame() {
+    userScore = 0;
+    computerScore = 0;
+    userScore_span.innerText = 0;
+    computerScore_span.innerText = 0;
+    result_p.innerText = "Make your move!";
+}
+
 // 3. Adding Event Listeners (waiting for clicks)
 
 function main() {
@@ -77,6 +86,10 @@ function main() {
 
     scissors_btn.addEventListener('click', function() {
         game("scissors");
+    });
+
+    reset_btn.addEventListener('click', function() {
+        resetGame();
     });
 }
 
